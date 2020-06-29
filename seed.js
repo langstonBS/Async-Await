@@ -2,7 +2,7 @@ require('dotenv').config();
 require('./lib/utils/connect')();
 
 const mongoose = require('mongoose');
-const seed = require('./db/seed');
+const seed = require('./data-helpers/seed');
 
 seed()
   .then(() => console.log('All Done!'))
