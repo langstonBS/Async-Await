@@ -1,6 +1,6 @@
 const chance = require('chance').Chance();
-const Movie = require('/lib/modle/Movie.js');
-const Review = require('/lib/modle/Film.js');
+const Movie = require('../lib/models/Movie');
+const Review = require('../lib/models/Review');
 
 const seed = async({ movieAmount = 5, reviewAmount = 100 } = {}) => {
   const movieArray = await Promise.all([...Array(movieAmount)].map(() => {

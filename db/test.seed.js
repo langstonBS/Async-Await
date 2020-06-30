@@ -1,10 +1,11 @@
+require('dotenv').config();
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongod = new MongoMemoryServer();
 const mongoose = require('mongoose');
 const connect = require('../lib/utils/connect');
 const { seed } = require('./seed');
-const Movie = require('../lib/modle/Movie');
-const Review = require('../lib/modle/Movie');
+const Movie = require('../lib/models/Movie');
+const Review = require('../lib/models/Movie');
 
 describe('movie tests', () => {
 
