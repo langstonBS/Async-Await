@@ -1,0 +1,24 @@
+const chance = require('chance').Chance();
+const Movie = require('../lib/models/Movie');
+const Review = require('../lib/models/Review');
+
+const seed = async({ movieAmount = 5, reviewAmount = 100 } = {}) => {
+  const movieArray = await Promise.all([...Array(movieAmount)].map(() => {
+    return Movie.create({
+      title: chance.name({ length: 3 }),
+      description: chance.sentence({ length: 12 }),
+      studio: chance.sentence({ length: 2 })
+    });
+  }));
+  await Promise.all([...Array(reviewAmount)].map(() => {
+    return Review.create({
+      movie: chance.name(movieArray)._id,
+      authorName: chance.name(),
+      comment: chance.sentence({ length: 12 })
+    });
+  }));
+};
+
+module.exports = {
+  seed
+};
